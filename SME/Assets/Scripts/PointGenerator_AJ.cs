@@ -63,9 +63,19 @@ public class PointGenerator_AJ : MonoBehaviour
         var y = Mathf.Sin(x_2);
         return y;
     }
-}
 
-public struct CtrlPoints
-{
-    public Vector3 P1;
+    public float GetSplineError(float splineVal, float t)
+    {
+        float x2 = t * t;
+        float realVal = Mathf.Sin(x2);
+
+        float ret = realVal - splineVal;
+        return ret;
+    }
+
+    public Vector3 GetStepVal()
+    {
+        var ret = new Vector3(this.m_step, this.m_start, this.m_stop);
+        return ret;
+    }
 }
