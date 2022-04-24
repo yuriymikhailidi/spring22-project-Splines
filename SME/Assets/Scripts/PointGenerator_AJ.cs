@@ -10,7 +10,7 @@ public class PointGenerator_AJ : MonoBehaviour
     [SerializeField] private float m_stop;
     private List<Vector3> m_points;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         this.m_points = new List<Vector3>();
         PointGenerator_AJ.Instance = this;
