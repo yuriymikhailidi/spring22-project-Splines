@@ -123,52 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &214435492
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 214435494}
-  - component: {fileID: 214435493}
-  m_Layer: 0
-  m_Name: PointGenerator GO
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &214435493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214435492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b156d000489cc7645badd9acb175c802, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_step: 0.1
-  m_start: 0
-  m_stop: 20
---- !u!4 &214435494
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214435492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.212955, y: -0.27061188, z: 3.374507}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &531393053
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,9 +309,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1690355171}
   - component: {fileID: 1690355170}
+  - component: {fileID: 1690355172}
   - component: {fileID: 1690355169}
+  - component: {fileID: 1690355173}
   m_Layer: 0
-  m_Name: Spline
+  m_Name: spline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,9 +332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _calcStep: 0.001
-  _errorMean: 0
-  _variance: 0
-  _stdDev: 0
+  _ErrorMean: {x: 0, y: 0}
+  _variance: {x: 0, y: 0}
+  _stdDev: {x: 0, y: 0}
 --- !u!114 &1690355170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,32 +349,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - position: {x: 5, y: 0, z: 0}
-    direction: {x: 5, y: 0, z: -3}
+    direction: {x: 5.75, y: 0, z: 0}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
   - position: {x: 10, y: 0, z: 0}
-    direction: {x: 10, y: 0, z: 3}
+    direction: {x: 10.75, y: 0, z: 0}
     up: {x: 0, y: 1, z: 0}
     scale: {x: 1, y: 1}
     roll: 0
   curves:
   - n1:
       position: {x: 5, y: 0, z: 0}
-      direction: {x: 5, y: 0, z: -3}
+      direction: {x: 5.75, y: 0, z: 0}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     n2:
       position: {x: 10, y: 0, z: 0}
-      direction: {x: 10, y: 0, z: 3}
+      direction: {x: 10.75, y: 0, z: 0}
       up: {x: 0, y: 1, z: 0}
       scale: {x: 1, y: 1}
       roll: 0
     Changed:
       m_PersistentCalls:
         m_Calls: []
-  Length: 7.5348897
+  Length: 5
   isLoop: 0
   CurveChanged:
     m_PersistentCalls:
@@ -435,5 +391,33 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1690355172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690355168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b156d000489cc7645badd9acb175c802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_step: 0.1
+  m_start: 0
+  m_stop: 20
+--- !u!114 &1690355173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690355168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c62baecdb58fe4583d8f8283102e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curvature: 0.3
