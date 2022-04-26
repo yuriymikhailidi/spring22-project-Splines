@@ -7,9 +7,9 @@ public class BS_AJ_PointLoader : MonoBehaviour
     private BezierSpline _spline;
     [SerializeField] private float _calcStep;
 
-    [SerializeField] private float _errorMean;
-    [SerializeField] private float _variance;
-    [SerializeField] private float _stdDev;
+    [SerializeField] private Vector2 _errorMean;
+    [SerializeField] private Vector2 _variance;
+    [SerializeField] private Vector2 _stdDev;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +46,7 @@ public class BS_AJ_PointLoader : MonoBehaviour
         this._spline.AutoConstructSpline2();
 
         var tDiff = stop - start;
-        var totalError = 0f;
+        var totalError = new Vector2(0f, 0f);
         var t = start;
         var n = 0;
         while (t < stop)
@@ -67,7 +67,7 @@ public class BS_AJ_PointLoader : MonoBehaviour
 
         //calc variance
 
-        var totalVar = 0f;
+        var totalVar = new Vector2(0f, 0f);
         t = start;
         while (t < stop)
         {
@@ -77,14 +77,17 @@ public class BS_AJ_PointLoader : MonoBehaviour
 
             var errorVal = PointGenerator_AJ.Instance.GetSplineError(splineVal, t);
 
-            var diff = (errorVal - this._errorMean);
+            var diffX = (errorVal.x - this._errorMean.x);
+            var diffY = (errorVal.y - this._errorMean.y);
 
-            totalVar += diff * diff;
+            totalVar.x += diffX * diffX;
+            totalVar.y += diffY * diffY;
 
             t += this._calcStep;
         }
 
         this._variance = totalVar / n;
-        this._stdDev = Mathf.Sqrt(this._variance);
+        this._stdDev.x = Mathf.Sqrt(this._variance.x);
+        this._stdDev.y = Mathf.Sqrt(this._variance.y);
     }
 }
