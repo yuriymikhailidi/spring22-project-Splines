@@ -60,14 +60,14 @@ public class PointGenerator_AJ : MonoBehaviour
     public float GetYFromEq(float x)
     {
         var x_2 = x * x;
-        var y = Mathf.Sin(x_2);
+        var y = Mathf.Sin(x_2)+2;
         return y;
     }
 
     public Vector2 GetSplineError(float splineVal, float t)
     {
         float x2 = t * t;
-        float realVal = Mathf.Sin(x2);
+        float realVal = Mathf.Sin(x2)+2;
 
         float ret = Mathf.Abs(splineVal - realVal);
         return new Vector2(ret, ret/Mathf.Abs(realVal)); // relative error |ret|/|realVal|
