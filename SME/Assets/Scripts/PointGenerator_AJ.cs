@@ -64,13 +64,13 @@ public class PointGenerator_AJ : MonoBehaviour
         return y;
     }
 
-    public float GetSplineError(float splineVal, float t)
+    public Vector2 GetSplineError(float splineVal, float t)
     {
         float x2 = t * t;
         float realVal = Mathf.Sin(x2);
 
-        float ret = realVal - splineVal;
-        return ret;
+        float ret = Mathf.Abs(splineVal - realVal);
+        return new Vector2(ret, ret/Mathf.Abs(realVal)); // relative error |ret|/|realVal|
     }
 
     public Vector3 GetStepVal()

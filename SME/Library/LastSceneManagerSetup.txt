@@ -1,5 +1,9 @@
 sceneSetups:
 - path: Assets/Scenes/AJ_spline.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/SplineMeshExperimentScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
